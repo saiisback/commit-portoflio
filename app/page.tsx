@@ -144,37 +144,64 @@ export default function Home() {
           <div className="animate-blob delay-300 h-[400px] w-[400px] rounded-full bg-gradient-to-tl from-foreground/[0.05] via-foreground/[0.02] to-transparent blur-3xl" />
         </div>
 
-        <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center text-center">
+        <div className="relative z-10 mx-auto flex max-w-7xl flex-col items-center text-center">
+          {/* Intro badge */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.25, 0.4, 0.25, 1] }}
+            initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
+            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <h1 className="text-[clamp(3.5rem,12vw,12rem)] font-bold leading-[0.9] tracking-tighter">
-              Build for
-              <br />
-              <span className="text-gradient">Change</span>
-            </h1>
+            <span className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/[0.03] px-5 py-2 font-mono text-xs uppercase tracking-widest text-muted-foreground backdrop-blur-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
+              Now accepting projects for 2025
+            </span>
           </motion.div>
 
-          <motion.div
+          {/* Main headline — each line staggers in */}
+          <div className="mt-10">
+            <motion.h1
+              className="text-[clamp(4rem,14vw,14rem)] font-black leading-[0.85] tracking-tighter"
+            >
+              <motion.span
+                className="block"
+                initial={{ opacity: 0, y: 60, filter: "blur(8px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.4, 0.25, 1] }}
+              >
+                Build for
+              </motion.span>
+              <motion.span
+                className="block text-gradient"
+                initial={{ opacity: 0, y: 60, filter: "blur(8px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
+              >
+                Change.
+              </motion.span>
+            </motion.h1>
+          </div>
+
+          {/* Subtitle */}
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-8 text-xl text-muted-foreground sm:text-2xl"
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl"
           >
-            We create{" "}
+            A creative collective that ships{" "}
             <FlipWords
               words={["brands", "products", "communities", "movements", "futures"]}
               className="text-foreground font-semibold"
-            />
-          </motion.div>
+            />{" "}
+            for companies that refuse to blend in.
+          </motion.p>
 
+          {/* Dual CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-            className="mt-12 flex items-center justify-center"
+            transition={{ duration: 0.8, delay: 1.1 }}
+            className="mt-12 flex flex-col items-center gap-4 sm:flex-row"
           >
             <ShimmerButton
               shimmerColor="#ffffff"
@@ -184,14 +211,21 @@ export default function Home() {
               Start a Project
               <ArrowRight className="ml-2 inline h-4 w-4" />
             </ShimmerButton>
+            <a
+              href="#work"
+              className="group flex items-center gap-2 rounded-full border border-foreground/10 px-8 py-4 text-base font-medium text-foreground transition-colors hover:bg-foreground/5"
+            >
+              See Our Work
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </a>
           </motion.div>
 
           {/* Scroll indicator */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.5 }}
-            className="mt-20"
+            transition={{ delay: 2 }}
+            className="mt-24"
           >
             <motion.div
               animate={{ y: [0, 8, 0] }}
